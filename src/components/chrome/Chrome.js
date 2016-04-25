@@ -83,10 +83,26 @@ export class Chrome extends ReactCSS.Component {
     this.props.onChange(data)
   }
 
+  componentDidMount(): any {
+    document.onclick = function(event) {
+      var target = $(event.target);
+      var container = $(this.refs.picker);
+      if (!(target === this.refs.picker || container.has(target).length > 0)) {
+        if (this.props.closeCallback) {
+          this.props.closeCallback();
+        };
+      }
+    }.bind(this);
+  }
+
+  componentWillUnmount(): any {
+    document.onclick = undefined;
+  }
+
   render(): any {
     if (!this.props.display) return null;
     return (
-      <div is="picker">
+      <div is="picker" ref="picker" id="chrome-color-picker">
         <div is="saturation">
           <Saturation is="Saturation" {...this.props} pointer={ ChromePointerCircle } onChange={ this.handleChange }/>
         </div>
