@@ -63,7 +63,7 @@ export class Chrome extends ReactCSS.Component {
         hue: {
           height: '10px',
           position: 'relative',
-          marginBottom: '8px',
+          marginTop: '9px'
         },
         Hue: {
           radius: '2px',
@@ -84,6 +84,7 @@ export class Chrome extends ReactCSS.Component {
   }
 
   render(): any {
+    if (!this.props.display) return null;
     return (
       <div is="picker">
         <div is="saturation">
@@ -100,9 +101,6 @@ export class Chrome extends ReactCSS.Component {
             <div is="toggles">
               <div is="hue">
                 <Hue is="Hue" {...this.props} pointer={ ChromePointer } onChange={ this.handleChange } />
-              </div>
-              <div is="alpha">
-                <Alpha is="Alpha" {...this.props} pointer={ ChromePointer } onChange={ this.handleChange } />
               </div>
             </div>
           </div>
