@@ -63,6 +63,7 @@ export class ChromeFields extends ReactCSS.Component {
               boxShadow: 'inset 0 0 0 1px #dadada',
               height: '21px',
               textAlign: 'center',
+              padding: '0px'
             },
             label: {
               textTransform: 'uppercase',
